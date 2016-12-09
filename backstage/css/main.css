@@ -43,7 +43,7 @@ body{
 }
 /*后台管理界面*/
 #header{
-	height: 77px;
+	height: 80px;
 	position: relative;
 	width: 100%;
 	background-color: #1f262d;
@@ -91,7 +91,6 @@ body{
 }
 #sidebar{
 	display: block;
-	float: left;
 	position: relative;
 	width: 220px;
 }
@@ -142,24 +141,25 @@ body{
 }
 #content{
 	background: none repeat scroll 0 0 #eeeeee;
-	position: relative;
-	width: auto;
+	position: absolute;
+	top: 80px;
+	left: 220px;
+	width: calc(100% - 220px);
 	min-height: 100%;
 	padding-bottom: 25px;
-	margin-left: 220px;
-	margin-right: 0; 
+	z-index: 50;
 }
 #content-header{
 	width: 100%;
-	margin-top: -30px;
+	margin-top: -35px;
 	z-index: 20;
 }
 #breadcrumb{
 	background: #FFF;
 	border-bottom: 1px solid #e3ebed;
 }
-#breadcrumb a{
-	padding: 8px 20px 8px 15px;
+#breadcrumb span{
+	padding: 5px 20px 5px 15px;
 	display: inline-block;
 	font-size: 14px;
 	color: #666;
@@ -190,4 +190,22 @@ body{
 }
 #content tr:hover{
 	background-color: #eee;
+}
+#content label{
+	font-size: 16px;
+}
+#content .lab_cen{
+	float: left;
+}
+#content .line-graph{
+	height: 380px;
+	margin-top: 50px;
+	background: #F9F9F9;
+}
+#myChart{
+	width: 80%;
+}
+#content .explain{
+	background: #000;
+	float: right;
 }

@@ -7,11 +7,12 @@
 	<title>后台管理界面</title>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/wangEditor.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
   	<link rel="stylesheet" type="text/css" href="./css/main.css">
   	<script src="./js/jquery.js"></script>
   	<script src="./js/bootstrap.js"></script>
-  	<script src="./js/chart.js"></script>
+  	<script src="./js/wangEditor.min.js"></script>
     <script src="./js/common.js"></script>
 </head>
 <body>
@@ -93,19 +94,19 @@
 	<!-- 右侧导航栏 -->
 	<div id="sidebar">
 		<ul>
-			<li class="active">
+			<li>
 				<a href="index.html">
 					<i class="icon icon-home"></i>
 					<span>首页</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-briefcase"></i>
 					<span>合同管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul>
+				<ul style="display:block">
 					<li>
 						<a href="#"><i class="icon icon-chevron-right"></i>　合同列表</a>
 					</li>
@@ -172,21 +173,54 @@
 		<div id="content-header">
 			<div id="breadcrumb">
 				<span href="" class="tip-bottom">
-					<i class="icon icon-home"></i>
-					<span> 首页　</span>
+					<i class="icon icon-briefcase"></i>
+					<span> 合同管理　</span>
+					<i class="icon icon-chevron-right"></i>
+					<span>　新建合同</span>
 				</span>
 			</div>
+			<h2>新建合同</h2>
 		</div>
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="col-md-8 line-graph">
-					<h3 class="col-md-offset-4">本季度各部门业绩折线图</h3>
-					<canvas id="myChart" height="300"></canvas>
-					<div class="col-md-1 explain">
-						<p>房产部</p>
+			<hr>
+			<form action="" class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="conName" class="col-md-2 control-label">合同名称</label>
+					<div class="col-md-4">
+						<input type="text" id="conName" class="form-control" placeholder="请输入合同名称">
 					</div>
 				</div>
-			</div>
+				<div class="form-group">
+					<label for="conTime1" class="col-md-2 control-label">合同期限</label>
+					<div class="col-md-2">
+						<input type="text" id="conTime1" class="form-control" placeholder="年/月/日">
+					</div>
+					<label for="conTime2" class="control-label lab_cen">至</label>
+					<div class="col-md-2">
+						<input type="text" id="conTime2" class="form-control" placeholder="年/月/日">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="conPrice" class="col-md-2 control-label">合同金额</label>
+					<div class="col-md-4">
+						<input type="text" id="conPrice" class="form-control" placeholder="请输入合同金额">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="conText" class="col-md-2 control-label">合同内容</label>
+					<div class="col-md-8">
+						<textarea id="conText" class="form-control" rows="15">
+							<p>请输入内容...</p>
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="conBusiness" class="col-md-2 control-label">合同商家</label>
+					<div class="col-md-4">
+						<input type="text" id="conBusiness" class="form-control" placeholder="请输入合同商家">
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 	
@@ -196,73 +230,12 @@
 			subM.click(function(){
 				$(this).next().slideToggle();
 			});
+			var editor = new wangEditor('conText');
+			editor.config.uploadImgUrl = '/upload';
+			editor.config.emotionsShow = 'value';
+			editor.create();
+			
 		})();
-
-		var arr2=new Array();  arr2[0]="30";arr2[1]="52";arr2[2]="45";arr2[3]="78";
-		arr2[4]="27";arr2[5]="88";arr2[6]="65";
-
-		//用于存放图表上的数据
-		var lineChartData = {  
-		//表的X轴参数
-		labels : ["一月","二月","三月","四月","五月","六月","七月"],
-		datasets : [
-		    {
-		    	label: "my first dataset",
-		        fillColor : "transparent",     //背景色，常用transparent透明
-		        strokeColor : "rgba(238,121,81,1)",  //线条颜色，也可用"#ffffff"
-		        pointColor : "rgba(238,121,81,1)",   //点的填充颜色
-		        pointStrokeColor : "#fff",            //点的外边框颜色
-		        data : [65,59,32,29,46,55,40]      //点的Y轴值
-		    },
-
-		    {
-		        fillColor : "transparent",
-		        strokeColor : "rgba(78,185,240,1)",
-		        pointColor : "rgba(78,185,240,1)",
-		        pointStrokeColor : "#fff",
-		        data : []    //data中的参数，通过下方for循环，获取arr2中的数据
-		    }
-		  ]
-		}
-
-		   for(var i = 0; i < arr2.length;i++)
-		   { 
-		    lineChartData.datasets[1].data.push(arr2[i]);//将数组arr2中的值写入data
-		   }
-
-		//定义图表的参数   
-		var defaults = {    
-		    scaleStartValue :null,     			  // Y 轴的起始值
-		    scaleLineColor : "rgba(0,0,0,.5)",    // Y/X轴的颜色
-		    scaleLineWidth : 0.5,        			  // X,Y轴的宽度
-		    scaleShowLabels : true,   			  // 刻度是否显示标签, 即Y轴上是否显示文字   
-		    scaleLabel : "<%=value%>",			  // Y轴上的刻度,即文字  
-		    scaleFontFamily : "'Arial'", 	      // 字体  
-		    scaleFontSize : 18,        	          // 文字大小 
-		    scaleFontStyle : "normal",  		  // 文字样式  
-		    scaleFontColor : "#666",    		  // 文字颜色  
-		    scaleShowGridLines : true,  		  // 是否显示网格  
-		    scaleGridLineColor : "rgba(0,0,0,.2)",   // 网格颜色
-		    scaleGridLineWidth : 0.5,      		  // 网格宽度  
-		    bezierCurve : false,        		  // 是否使用贝塞尔曲线? 即:线条是否弯曲     
-		    pointDot : true,             		  // 是否显示点数  
-		    pointDotRadius : 5,          		  // 圆点的大小  
-		    pointDotStrokeWidth : 1,     		  // 圆点的笔触宽度, 即:圆点外层边框大小 
-		    datasetStroke : true,        		  // 数据集行程
-		    datasetStrokeWidth : 1,      		  // 线条的宽度, 即:数据集
-		    datasetFill : true,         	  	  // 是否填充数据集 
-		    animation : true,           		  // 是否执行动画  
-		    animationSteps : 50,          		  // 动画的时间   
-		    animationEasing : "easeOutQuart",     // 动画的特效   
-		    onAnimationComplete : null   		  // 动画完成时的执行函数   
-		    }
-
-		    window.onload = function(){
-		    	var chartBox = document.getElementById("myChart");
-		        var ctx = chartBox.getContext("2d");
-		        chartBox.width = parseInt($(".line-graph").css("width")) * 0.85;
-		        window.myLine = new Chart(ctx).Line(lineChartData,defaults); 
-		    }
 	</script>
 </body>
 </html>

@@ -100,13 +100,13 @@
 					<span>首页</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-briefcase"></i>
 					<span>合同管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul style="display:block">
+				<ul>
 					<li>
 						<a href="contract_list.html"><i class="icon icon-chevron-right"></i>　合同列表</a>
 					</li>
@@ -151,13 +151,13 @@
 					<span>日志管理</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-folder-close"></i>
 					<span>文章管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul>
+				<ul style="display:block">
 					<li>
 						<a href="article.html"><i class="icon icon-chevron-right"></i>　列表</a>
 					</li>
@@ -174,40 +174,30 @@
 			<div id="breadcrumb">
 				<span href="" class="tip-bottom">
 					<i class="icon icon-briefcase"></i>
-					<span> 合同管理　</span>
+					<span> 文章管理　</span>
 					<i class="icon icon-chevron-right"></i>
-					<span>　新建合同</span>
+					<span>　文章添加</span>
 				</span>
 			</div>
-			<h2>新建合同</h2>
+			<h2>新建文章</h2>
 		</div>
 		<div class="container-fluid">
 			<hr>
 			<form action="" id="con_add" class="form-horizontal" role="form">
 				<div class="form-group">
-					<label for="conName" class="col-md-2 control-label">合同名称</label>
+					<label for="conName" class="col-md-2 control-label">文章标题</label>
 					<div class="col-md-4">
-						<input type="text" id="conName" class="form-control" placeholder="请输入合同名称">
+						<input type="text" id="conName" class="form-control" placeholder="请输入文章标题">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="conTime1" class="col-md-2 control-label">合同期限</label>
-					<div class="col-md-2">
-						<input type="text" id="conTime1" class="form-control" placeholder="年/月/日">
-					</div>
-					<label for="conTime2" class="control-label lab_cen">至</label>
-					<div class="col-md-2">
-						<input type="text" id="conTime2" class="form-control" placeholder="年/月/日">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conPrice" class="col-md-2 control-label">合同金额</label>
+					<label for="conPrice" class="col-md-2 control-label">作者名称</label>
 					<div class="col-md-4">
-						<input type="text" id="conPrice" class="form-control" placeholder="请输入合同金额">
+						<input type="text" id="conPrice" class="form-control" placeholder="请输入作者名称">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="conText" class="col-md-2 control-label">合同内容</label>
+					<label for="conText" class="col-md-2 control-label">文章内容</label>
 					<div class="col-md-8">
 						<textarea id="conText" class="form-control" rows="15">
 							<p>请输入内容...</p>
@@ -215,9 +205,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="conBusiness" class="col-md-2 control-label">合同商家</label>
+					<label for="conBusiness" class="col-md-2 control-label">发布时间</label>
 					<div class="col-md-4">
-						<input type="text" id="conBusiness" class="form-control" placeholder="请输入合同商家">
+						<input type="text" id="conBusiness" class="form-control" placeholder="请输入时间">
 					</div>
 				</div>
 				<div class="form-group">

@@ -7,12 +7,10 @@
 	<title>后台管理界面</title>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/wangEditor.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
   	<link rel="stylesheet" type="text/css" href="./css/main.css">
   	<script src="./js/jquery.js"></script>
   	<script src="./js/bootstrap.js"></script>
-  	<script src="./js/wangEditor.min.js"></script>
     <script src="./js/common.js"></script>
 </head>
 <body>
@@ -100,13 +98,13 @@
 					<span>首页</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-briefcase"></i>
 					<span>合同管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul style="display:block">
+				<ul>
 					<li>
 						<a href="contract_list.html"><i class="icon icon-chevron-right"></i>　合同列表</a>
 					</li>
@@ -145,7 +143,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li class="active">
 				<a href="log.html">
 					<i class="icon icon-calendar"></i>
 					<span>日志管理</span>
@@ -169,76 +167,157 @@
 		</ul>
 	</div>
 	<!-- 中心区域 -->
-	<div id="content" style="padding-bottom:100px">
+	<div id="content" style="padding-bottom:200px">
 		<div id="content-header">
 			<div id="breadcrumb">
 				<span href="" class="tip-bottom">
-					<i class="icon icon-briefcase"></i>
-					<span> 合同管理　</span>
-					<i class="icon icon-chevron-right"></i>
-					<span>　新建合同</span>
+					<i class="icon icon-calendar"></i>
+					<span> 日志管理　</span>
 				</span>
 			</div>
-			<h2>新建合同</h2>
+			<h2>日志列表</h2>
+			<div class="filter">
+				<from class="form-inline" role="form">
+					<div class="form-group">
+						<select id="filter_depart" class="form-control">
+					      <option>部门</option>
+					      <option>技术部</option>
+					      <option>房产部</option>
+					      <option>电商部</option>
+					      <option>编辑部</option>
+					    </select>
+					</div>
+					<div class="form-group">
+					    <div class="col-md-5">
+						    <input type="text" class="form-control" id="name" placeholder="请输入关键词">
+					    </div>
+					 </div>
+					<div class="form-group" style="margin-right:15px">
+					    <button id="filter_all" type="submit" class="btn btn-default">筛选</button>
+					 </div>
+				</from>
+			</div>
 		</div>
 		<div class="container-fluid">
 			<hr>
-			<form action="" id="con_add" class="form-horizontal" role="form">
-				<div class="form-group">
-					<label for="conName" class="col-md-2 control-label">合同名称</label>
-					<div class="col-md-4">
-						<input type="text" id="conName" class="form-control" placeholder="请输入合同名称">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conTime1" class="col-md-2 control-label">合同期限</label>
-					<div class="col-md-2">
-						<input type="text" id="conTime1" class="form-control" placeholder="年/月/日">
-					</div>
-					<label for="conTime2" class="control-label lab_cen">至</label>
-					<div class="col-md-2">
-						<input type="text" id="conTime2" class="form-control" placeholder="年/月/日">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conPrice" class="col-md-2 control-label">合同金额</label>
-					<div class="col-md-4">
-						<input type="text" id="conPrice" class="form-control" placeholder="请输入合同金额">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conText" class="col-md-2 control-label">合同内容</label>
-					<div class="col-md-8">
-						<textarea id="conText" class="form-control" rows="15">
-							<p>请输入内容...</p>
-						</textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conBusiness" class="col-md-2 control-label">合同商家</label>
-					<div class="col-md-4">
-						<input type="text" id="conBusiness" class="form-control" placeholder="请输入合同商家">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-2">
-						<input class="btn departsub" type="submit" value="保存修改">
-					</div>
-				</div>
+			<form action="">
+			<table class="table table-bordered table-responsive">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>日志内容</th>
+						<th>部门</th>
+						<th>操作人</th>
+						<th width="300">时间</th>
+				</thead>
+				<tbody id="loglist">
+					<tr>
+						<td>1</td>
+						<td>修改了目录</td>
+						<td>技术部</td>
+						<td>张先生</td>
+						<td>2016-11-23 12:12</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>添加了表单</td>
+						<td>电商部</td>
+						<td>小陈</td>
+						<td>2016-11-23 12:12</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>删除了若干文章</td>
+						<td>房产部</td>
+						<td>洪先生</td>
+						<td>2016-11-23 12:12</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>添加了部分内容</td>
+						<td>运营部</td>
+						<td>王先生</td>
+						<td>2016-11-23 12:12</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>删除了表单</td>
+						<td>编辑部</td>
+						<td>高先生</td>
+						<td>2016-11-23 12:12</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>修改了目录详情</td>
+						<td>家装部</td>
+						<td>洪先生</td>
+						<td>2016-11-23 12:12</td>
+					</tr>
+				</tbody>
+			</table>
 			</form>
+			<div class="page col-md-5 pull-right">
+				<i class="disabled">上一页</i>
+				<i class="curr">1</i>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="">6</a>
+				<a href="">7</a>
+				<i class="dotted">...</i>
+				<a href="" class="anxt btn btn-primary">下一页</a>
+			</div>
 		</div>
 	</div>
-	
 	<script type="text/javascript">
 		(function(){
-			var subM = $(".submenu"),sec = $("#selectall");
+			var subM = $(".submenu");
 			subM.click(function(){
 				$(this).next().slideToggle();
 			});
-			var editor = new wangEditor('conText');
-			editor.config.uploadImgUrl = '/upload';
-			editor.config.emotionsShow = 'value';
-			editor.create();
+			var loglist = $("#loglist");
+			$("#filter_all").click(function(){
+
+				var secdepart = $("#filter_depart option:selected").val();
+				var filtername = $("#name").val();
+				if(secdepart == "部门" && filtername == ""){
+					alert("输入不能为空");
+					loglist.find("tr").each(function(){
+						$(this).show();
+					})
+					return false;
+				}else if(filtername == ""){
+					// 在只选了部门的情况下
+					loglist.find("tr").each(function(){
+						if(secdepart == $(this).find("td").eq(2).text()){
+							$(this).show();
+						}else{
+							$(this).hide();
+						}
+						
+					})
+				}else if(secdepart == "部门"){
+					//只选了内容的情况下
+					loglist.find("tr").each(function(){
+						if($(this).find("td").text().match(filtername)){
+							$(this).show();
+						}else{
+							$(this).hide();
+						}
+					})
+				}else{
+					// 全选的情况
+					loglist.find("tr").each(function(){
+						if($(this).find("td").text().match(filtername) && secdepart == $(this).find("td").eq(2).text()){
+							$(this).show();
+						}else{
+							$(this).hide();
+						}
+					})
+				}
+			})
+			
 			
 		})();
 	</script>

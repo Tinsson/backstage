@@ -7,13 +7,11 @@
 	<title>后台管理界面</title>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/wangEditor.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
   	<link rel="stylesheet" type="text/css" href="./css/main.css">
   	<script src="./js/jquery.js"></script>
   	<script src="./js/bootstrap.js"></script>
-  	<script src="./js/wangEditor.min.js"></script>
-    <script src="./js/icheck.min.js"></script>
+  	<script src="./js/icheck.min.js"></script>
     <script src="./js/common.js"></script>
 </head>
 <body>
@@ -116,28 +114,28 @@
 					</li>
 				</ul>
 			</li>
-			<li class="active">
+			<li>
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-sitemap"></i>
 					<span>部门管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul style="display:block">
+				<ul>
 					<li>
 						<a href="department.html"><i class="icon icon-chevron-right"></i>　部门管理</a>
 					</li>
 					<li>
-						<a href="department_add.html"><i class="icon icon-chevron-right"></i>　部门添加</a>
+						<a href="department.html"><i class="icon icon-chevron-right"></i>　部门添加</a>
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li class="active">
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-group"></i>
 					<span>人员管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul>
+				<ul style="display:block">
 					<li>
 						<a href="staff.html"><i class="icon icon-chevron-right"></i>　权限管理</a>
 					</li>
@@ -170,43 +168,66 @@
 		</ul>
 	</div>
 	<!-- 中心区域 -->
-	<div id="content" style="padding-bottom:60px">
+	<div id="content" style="padding-bottom:200px">
 		<div id="content-header">
 			<div id="breadcrumb">
 				<span href="" class="tip-bottom">
-					<i class="icon icon-sitemap"></i>
-					<span> 部门管理　</span>
-					<i class="icon icon-chevron-right"></i>
-					<span>　部门管理</span>
+					<i class="icon icon-briefcase"></i>
+					<span> 人员管理　</span>
 				</span>
 			</div>
-			<h2>部门管理</h2>
+			<h2>人员管理</h2>
+			<div class="filter">
+				<from class="form-inline pull-right" role="form">
+					<div class="form-group">
+						<select id="filter_depart" class="form-control">
+					      <option>部门</option>
+					      <option>技术部</option>
+					      <option>房产部</option>
+					      <option>电商部</option>
+					      <option>编辑部</option>
+					    </select>
+					</div>
+					<div class="form-group">
+					    <div class="col-md-5">
+						    <input type="text" class="form-control" id="name" placeholder="请输入关键词">
+					    </div>
+					 </div>
+					 <div class="form-group" style="margin-right:15px">
+					    <button id="filter_all" type="submit" class="btn btn-default">筛选</button>
+					 </div>
+				</from>
+			</div>
 		</div>
 		<div class="container-fluid">
 			<hr>
 			<form action="">
-			<table class="table table-bordered table-responsive" style="table-layout:fixed">
+			<table class="table table-bordered table-responsive">
 				<thead>
 					<tr>
 						<th>
 							<input id="selectall" type="checkbox" name="title-table-checkbox" value="true">
 						</th>
 						<th>编号</th>
-						<th>部门名称</th>
-						<th>负责人</th>
-						<th>备注</th>
-						<th style="width:250px">操作</th>
+						<th>部门</th>
+						<th>名称</th>
+						<th>职位</th>
+						<th>入职时间</th>
+						<th>权限</th>
+						<th style="width:300px">操作</th>
 					</tr>
 				</thead>
-				<tbody id="departlist">
+				<tbody id="stafflist">
 					<tr>
 						<td>
 								<input type="checkbox" name="title-table-checkbox">
 						</td>
 						<td>1</td>
 						<td>技术部</td>
-						<td>负责人1</td>
-						<td class="remarks">备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</td>
+						<td>朱元璋</td>
+						<td>总监</td>
+						<td>2015-10-02</td>
+						<td>超级管理员</td>
 						<td>
 							<a class="btn btn-success lookup" href="#" role="button" data-toggle="modal" data-target="#details">查看</a>
 							<a class="btn btn-primary modifybtn" href="#" role="button" data-toggle="modal" data-target="#modify">修改</a>
@@ -219,8 +240,10 @@
 						</td>
 						<td>2</td>
 						<td>房产部</td>
-						<td>负责人2</td>
-						<td class="remarks">备注2备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</td>
+						<td>朱棣</td>
+						<td>小组组长</td>
+						<td>2016-07-02</td>
+						<td>管理员</td>
 						<td>
 							<a class="btn btn-success lookup" href="#" role="button" data-toggle="modal" data-target="#details">查看</a>
 							<a class="btn btn-primary modifybtn" href="#" role="button" data-toggle="modal" data-target="#modify">修改</a>
@@ -233,8 +256,10 @@
 						</td>
 						<td>3</td>
 						<td>编辑部</td>
-						<td>负责人3</td>
-						<td class="remarks">备注3备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</td>
+						<td>朱允炆</td>
+						<td>高级主编</td>
+						<td>2016-10-20</td>
+						<td>部门主管</td>
 						<td>
 							<a class="btn btn-success lookup" href="#" role="button" data-toggle="modal" data-target="#details">查看</a>
 							<a class="btn btn-primary modifybtn" href="#" role="button" data-toggle="modal" data-target="#modify">修改</a>
@@ -247,8 +272,10 @@
 						</td>
 						<td>4</td>
 						<td>电商部</td>
-						<td>负责人4</td>
-						<td class="remarks">备注4备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</td>
+						<td>朱厚照</td>
+						<td>业务员</td>
+						<td>2016-12-11</td>
+						<td>业务员</td>
 						<td>
 							<a class="btn btn-success lookup" href="#" role="button" data-toggle="modal" data-target="#details">查看</a>
 							<a class="btn btn-primary modifybtn" href="#" role="button" data-toggle="modal" data-target="#modify">修改</a>
@@ -260,9 +287,11 @@
 								<input type="checkbox" name="title-table-checkbox">
 						</td>
 						<td>5</td>
-						<td>运营部</td>
-						<td>负责人5</td>
-						<td class="remarks">备注5备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</td>
+						<td>房产部</td>
+						<td>郭德纲</td>
+						<td>HR</td>
+						<td>2016-01-15</td>
+						<td>部门经理</td>
 						<td>
 							<a class="btn btn-success lookup" href="#" role="button" data-toggle="modal" data-target="#details">查看</a>
 							<a class="btn btn-primary modifybtn" href="#" role="button" data-toggle="modal" data-target="#modify">修改</a>
@@ -274,9 +303,11 @@
 								<input type="checkbox" name="title-table-checkbox">
 						</td>
 						<td>6</td>
-						<td>家装部</td>
-						<td>负责人6</td>
-						<td class="remarks">备注6备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</td>
+						<td>技术部</td>
+						<td>小陈</td>
+						<td>前端开发</td>
+						<td>2016-02-03</td>
+						<td>业务员</td>
 						<td>
 							<a class="btn btn-success lookup" href="#" role="button" data-toggle="modal" data-target="#details">查看</a>
 							<a class="btn btn-primary modifybtn" href="#" role="button" data-toggle="modal" data-target="#modify">修改</a>
@@ -288,7 +319,19 @@
 			</form>
 			<div class="col-md-3 pull-left">
 				<a id="batchdel" class="btn btn-danger" href="" data-toggle="modal" data-target="#myModal">批量删除</a>
-				<a class="btn btn-primary col-md-offset-2" href="department_add.html">新建 <i class="icon icon-plus"></i></a>
+				<a class="btn btn-primary col-md-offset-2" href="staff_add.html">新建 <i class="icon icon-plus"></i></a>
+			</div>
+			<div class="page col-md-5 pull-right">
+				<i class="disabled">上一页</i>
+				<i class="curr">1</i>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="">6</a>
+				<a href="">7</a>
+				<i class="dotted">...</i>
+				<a href="" class="anxt btn btn-primary">下一页</a>
 			</div>
 		</div>
 	</div>
@@ -317,22 +360,43 @@
 		</div>
 	</div>
 	<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 						&times;
 					</button>
-					<h4 class="modal-title compact" id="myModalLabel" align="center">
-						技术部
+					<h4 class="modal-title" id="myModalLabel" align="center">
+						人员信息详情
 					</h4>
 				</div>
 				<div class="modal-body">
-					<h5 align="center">负责人:<span class="charge">负责人1</span></h5>
-					<div class="article-con" style="padding-top: 10px">
-						<h5 align="center">备注</h5>
-						<p class="remark_m">备注6备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1备注1</p>
-					</div>
+						<ul class="staff_modal">
+							<li>
+								<span class="labels">编号：</span>
+								<span class="label0">1</span>
+							</li>
+							<li>
+								<span class="labels">部门：</span>
+								<span class="label1">技术部</span>
+							</li>
+							<li>
+								<span class="labels">名称：</span>
+								<span class="label2">朱元璋</span>
+							</li>
+							<li>
+								<span class="labels">职位：</span>
+								<span class="label3">总监</span>
+							</li>
+							<li>
+								<span class="labels">入职时间：</span>
+								<span class="label4">2015-10-02</span>
+							</li>
+							<li>
+								<span class="labels">权限：</span>
+								<span class="label5">管理员</span>
+							</li>
+						</ul>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -350,23 +414,50 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 						&times;
 					</button>
-					<h4 class="modal-title compact2" id="myModalLabel" align="center">
-						银行借款合同
+					<h4 class="modal-title compact" id="myModalLabel" align="center">
+						人员信息详情
 					</h4>
 				</div>
-				<div class="modal-body">
-					<div class="article-meta col-md-12">
-						<label for="" class="control-label col-md-4">负责人：</label>
-						<div class="col-md-4">
-							<input type="text" class="form-control charge2" value="小陈">
+				<div class="modal-body staff-meta clearfix">
+					
+						<div class="form-group col-md-6">
+							<label for="" class="control-label col-md-4">部门：</label>
+							<div class="col-md-7">
+								<input id="sectors" type="text" class="form-control" id="charge" value="技术部">
+							</div>
 						</div>
-					</div>
-					<div class="article-con" style="padding-top:0">
-						<textarea id="listText" class="form-control" style="max-height:100px">
-							备注：
-							<p id="remark2">为了提高阿里巴巴中国站服装行业的总体产品品质，更好地规范卖家的发布行为和产品质量，特拟定服装行业标准。</p>
-						</textarea>
-					</div>
+						<div class="form-group col-md-6">
+							<label for="" class="control-label col-md-4">名称：</label>
+							<div class="col-md-7">
+								<input id="staffname" type="text" class="form-control" id="charge" value="朱元璋">
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="" class="control-label col-md-4">职位：</label>
+							<div class="col-md-7">
+								<input id="posn" type="text" class="form-control" id="charge" value="总监">
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="" class="control-label col-md-4">入职时间：</label>
+							<div class="col-md-7">
+								<input id="entry" type="text" class="form-control" id="charge" value="2016-12-12">
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="" class="control-label col-md-4">权限：</label>
+							<div class="col-md-7">
+								<select id="authority" class="form-control">
+							      <option>权限</option>
+							      <option>超级管理员</option>
+							      <option>管理员</option>
+							      <option>总经理</option>
+							      <option>部门经理</option>
+							      <option>部门主管</option>
+							      <option>业务员</option>
+							    </select>
+							</div>
+						</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消
@@ -392,46 +483,55 @@
 					$("tr input").iCheck("uncheck");
 				}
 			});
-			var tbId = $("#departlist");
 			// 查看功能
+			var tbId = $("#stafflist");
 			$(".lookup").click(function(){
-				var tdobject = $(this).parent().parent().find("td");
-				var assemble1 = [$(".compact"),$(".charge"),$(".remark_m")];
-				var assemble2 = [tdobject.eq(2).text(),
-								 tdobject.eq(3).text(),
-								 tdobject.eq(4).text()
+				var assemble1 = [$("label0"),$(".label1"),$(".label2"),$(".label3"),$(".label4"),$(".label5")];
+				var findtotd = $(this).parent().parent().find("td");
+				var assemble2 = [findtotd.eq(1).text(),
+								 findtotd.eq(2).text(),
+								 findtotd.eq(3).text(),
+								 findtotd.eq(4).text(),
+								 findtotd.eq(5).text(),
 				];
-				for(var i = 0;i<= 2;i++){
+				for(var i = 0;i<= 5;i++){
 					assemble1[i].text(assemble2[i]);
 				}
 			})
 			// 修改功能
 			var Mlist = 0;
-			var ass1 = [$(".compact2"),$(".charge2")];
+			var assemble1 = [$("#sectors"),$("#staffname"),$("#posn"),$("#entry"),$("#authority")];
 			$(".modifybtn").click(function(){
-				var tdobject = $(this).parent().parent().find("td");
-				var ass2 = [tdobject.eq(2).text(),
-							 tdobject.eq(3).text(),
-							 tdobject.eq(4).text()
-				]
-				ass1[0].text(ass2[0]);
-				ass1[1].val(ass2[1]);
-				$("#remark2").text(ass2[2]);
+				var ftd = $(this).parent().parent().find("td");
+				var assemble2 = [ftd.eq(2),
+								 ftd.eq(3),
+								 ftd.eq(4),
+								 ftd.eq(5),
+								 ftd.eq(6)
+				];
+				for(var i = 0;i<=4 ;i++){
+						assemble1[i].val(assemble2[i].text());
+				}
 				Mlist = $(this).parent().parent().index();
 			})
 			$("#savemodify").click(function(){
-				var tdobject = tbId.find("tr").eq(Mlist).find("td");
-				var ass3 = [tdobject.eq(2),
-							tdobject.eq(3),
-							tdobject.eq(4)
-				]
+				var fdm = tbId.find("tr").eq(Mlist).find("td");
+			    var assemble3 = [
+			    		fdm.eq(2),
+			    		fdm.eq(3),
+			    		fdm.eq(4),
+			    		fdm.eq(5),
+			    		fdm.eq(6)
+			    ];
 			    if(confirm("确认修改吗？")){
-			    	ass3[1].text(ass1[1].val());
-			    	ass3[2].text($("#remark2").text());
+			    	for(var i = 0;i<= 4;i++){
+						assemble3[i].text(assemble1[i].val());
+					}
 			    }
 			    
 			})
 			// 删除
+			
 			$(".singledel").click(function(){
 				if(confirm("确认删除")){
 					$(this).parent().parent().remove();
@@ -463,11 +563,47 @@
 					}
 				});
 			})
-			var editor = new wangEditor('listText');
-			editor.config.uploadImgUrl = '/upload';
-			editor.config.emotionsShow = 'value';
-			editor.create();
-			$(".wangEditor-txt").css("height","200px");
+			// 筛选功能
+			var loglist = $("#stafflist");
+			$("#filter_all").click(function(){
+				var secdepart = $("#filter_depart option:selected").val();
+				var filtername = $("#name").val();
+				if(secdepart == "部门" && filtername == ""){
+					alert("输入不能为空");
+					loglist.find("tr").each(function(){
+						$(this).show();
+					})
+					return false;
+				}else if(filtername == ""){
+					// 在只选了部门的情况下
+					loglist.find("tr").each(function(){
+						if(secdepart == $(this).find("td").eq(2).text()){
+							$(this).show();
+						}else{
+							$(this).hide();
+						}
+						
+					})
+				}else if(secdepart == "部门"){
+					//只选了内容的情况下
+					loglist.find("tr").each(function(){
+						if($(this).find("td").text().match(filtername)){
+							$(this).show();
+						}else{
+							$(this).hide();
+						}
+					})
+				}else{
+					// 全选的情况
+					loglist.find("tr").each(function(){
+						if($(this).find("td").text().match(filtername) && secdepart == $(this).find("td").eq(2).text()){
+							$(this).show();
+						}else{
+							$(this).hide();
+						}
+					})
+				}
+			})
 		})();
 	</script>
 </body>

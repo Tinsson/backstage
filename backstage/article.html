@@ -7,12 +7,11 @@
 	<title>后台管理界面</title>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/wangEditor.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
   	<link rel="stylesheet" type="text/css" href="./css/main.css">
   	<script src="./js/jquery.js"></script>
   	<script src="./js/bootstrap.js"></script>
-  	<script src="./js/wangEditor.min.js"></script>
+  	<script src="./js/icheck.min.js"></script>
     <script src="./js/common.js"></script>
 </head>
 <body>
@@ -100,13 +99,13 @@
 					<span>首页</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-briefcase"></i>
 					<span>合同管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul style="display:block">
+				<ul>
 					<li>
 						<a href="contract_list.html"><i class="icon icon-chevron-right"></i>　合同列表</a>
 					</li>
@@ -151,13 +150,13 @@
 					<span>日志管理</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a class="submenu" href="javascript:;">
 					<i class="icon icon-folder-close"></i>
 					<span>文章管理</span>
 					<b class="caret"></b>
 				</a>
-				<ul>
+				<ul style="display:block">
 					<li>
 						<a href="article.html"><i class="icon icon-chevron-right"></i>　列表</a>
 					</li>
@@ -169,77 +168,142 @@
 		</ul>
 	</div>
 	<!-- 中心区域 -->
-	<div id="content" style="padding-bottom:100px">
+	<div id="content" style="padding-bottom:200px">
 		<div id="content-header">
 			<div id="breadcrumb">
 				<span href="" class="tip-bottom">
-					<i class="icon icon-briefcase"></i>
-					<span> 合同管理　</span>
+					<i class="icon icon-folder-close"></i>
+					<span> 文章管理　</span>
 					<i class="icon icon-chevron-right"></i>
-					<span>　新建合同</span>
+					<span> 文章列表</span>
 				</span>
 			</div>
-			<h2>新建合同</h2>
+			<h2>文章列表</h2>
+			<div class="filter">
+				<from class="form-inline" role="form">
+					<div class="form-group">
+					    <div class="col-md-5">
+						    <input type="text" class="form-control" id="name" placeholder="请输入关键词">
+					    </div>
+					 </div>
+					<div class="form-group" style="margin-right:15px">
+					    <button type="submit" class="btn btn-default">筛选</button>
+					 </div>
+					 <div class="form-group">
+					 	<a class="btn btn-primary pull-right" href="contract_creat.html">新建 <i class="icon icon-plus"></i></a>
+					 </div>
+				</from>
+			</div>
 		</div>
 		<div class="container-fluid">
 			<hr>
-			<form action="" id="con_add" class="form-horizontal" role="form">
-				<div class="form-group">
-					<label for="conName" class="col-md-2 control-label">合同名称</label>
-					<div class="col-md-4">
-						<input type="text" id="conName" class="form-control" placeholder="请输入合同名称">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conTime1" class="col-md-2 control-label">合同期限</label>
-					<div class="col-md-2">
-						<input type="text" id="conTime1" class="form-control" placeholder="年/月/日">
-					</div>
-					<label for="conTime2" class="control-label lab_cen">至</label>
-					<div class="col-md-2">
-						<input type="text" id="conTime2" class="form-control" placeholder="年/月/日">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conPrice" class="col-md-2 control-label">合同金额</label>
-					<div class="col-md-4">
-						<input type="text" id="conPrice" class="form-control" placeholder="请输入合同金额">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conText" class="col-md-2 control-label">合同内容</label>
-					<div class="col-md-8">
-						<textarea id="conText" class="form-control" rows="15">
-							<p>请输入内容...</p>
-						</textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="conBusiness" class="col-md-2 control-label">合同商家</label>
-					<div class="col-md-4">
-						<input type="text" id="conBusiness" class="form-control" placeholder="请输入合同商家">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-2">
-						<input class="btn departsub" type="submit" value="保存修改">
-					</div>
-				</div>
+			<form action="">
+			<table class="table table-bordered table-responsive">
+				<thead>
+					<tr>
+						<th>
+							<input id="selectall" type="checkbox" name="title-table-checkbox" value="true">
+						</th>
+						<th>编号</th>
+						<th>文章标题</th>
+						<th>部门</th>
+						<th>操作人</th>
+						<th>时间</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+								<input type="checkbox" name="title-table-checkbox">
+						</td>
+						<td>1</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+								<input type="checkbox" name="title-table-checkbox">
+						</td>
+						<td>2</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+								<input type="checkbox" name="title-table-checkbox">
+						</td>
+						<td>3</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+								<input type="checkbox" name="title-table-checkbox">
+						</td>
+						<td>4</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+								<input type="checkbox" name="title-table-checkbox">
+						</td>
+						<td>5</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+								<input type="checkbox" name="title-table-checkbox">
+						</td>
+						<td>6</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
 			</form>
+			<div class="col-md-2 pull-left">
+				<a class="btn btn-danger" href="">批量删除</a>
+			</div>
+			<div class="page col-md-5 pull-right">
+				<i class="disabled">上一页</i>
+				<i class="curr">1</i>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="">6</a>
+				<a href="">7</a>
+				<i class="dotted">...</i>
+				<a href="" class="anxt btn btn-primary">下一页</a>
+			</div>
 		</div>
 	</div>
-	
 	<script type="text/javascript">
 		(function(){
 			var subM = $(".submenu"),sec = $("#selectall");
 			subM.click(function(){
 				$(this).next().slideToggle();
 			});
-			var editor = new wangEditor('conText');
-			editor.config.uploadImgUrl = '/upload';
-			editor.config.emotionsShow = 'value';
-			editor.create();
-			
+			sec.click(function(){
+				if($(this).is(":checked")){
+					$("tr input").iCheck("check");
+				}else{
+					$("tr input").iCheck("uncheck");
+				}
+			});
 		})();
 	</script>
 </body>

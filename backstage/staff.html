@@ -318,8 +318,8 @@
 			</table>
 			</form>
 			<div class="col-md-3 pull-left">
-				<a id="batchdel" class="btn btn-danger" href="" data-toggle="modal" data-target="#myModal">批量删除</a>
-				<a class="btn btn-primary col-md-offset-2" href="staff_add.html">新建 <i class="icon icon-plus"></i></a>
+				<a id="batchdel" class="btn btn-danger btn-lg" href="" data-toggle="modal" data-target="#myModal">批量删除</a>
+				<a class="btn btn-primary btn-lg col-md-offset-2" href="staff_add.html">新建 <i class="icon icon-plus"></i></a>
 			</div>
 			<div class="page col-md-5 pull-right">
 				<i class="disabled">上一页</i>
@@ -551,6 +551,7 @@
 					}
 				});
 				if(empty >= index){
+					alert("未选择任何员工");
 					return false;
 				}
 			})

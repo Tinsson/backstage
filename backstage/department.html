@@ -7,12 +7,10 @@
 	<title>后台管理界面</title>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/wangEditor.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/reset.css">
   	<link rel="stylesheet" type="text/css" href="./css/main.css">
   	<script src="./js/jquery.js"></script>
   	<script src="./js/bootstrap.js"></script>
-  	<script src="./js/wangEditor.min.js"></script>
     <script src="./js/icheck.min.js"></script>
     <script src="./js/common.js"></script>
 </head>
@@ -287,8 +285,8 @@
 			</table>
 			</form>
 			<div class="col-md-3 pull-left">
-				<a id="batchdel" class="btn btn-danger" href="" data-toggle="modal" data-target="#myModal">批量删除</a>
-				<a class="btn btn-primary col-md-offset-2" href="department_add.html">新建 <i class="icon icon-plus"></i></a>
+				<a id="batchdel" class="btn btn-danger btn-lg" href="" data-toggle="modal" data-target="#myModal">批量删除</a>
+				<a class="btn btn-primary btn-lg col-md-offset-2" href="department_add.html">新建 <i class="icon icon-plus"></i></a>
 			</div>
 		</div>
 	</div>
@@ -343,7 +341,7 @@
 		</div>
 	</div>
 	<div class="modal fade" id="modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="index.php" method="get">
 				<div class="modal-header">
@@ -354,18 +352,18 @@
 						银行借款合同
 					</h4>
 				</div>
-				<div class="modal-body">
-					<div class="article-meta col-md-12">
-						<label for="" class="control-label col-md-4">负责人：</label>
-						<div class="col-md-4">
+				<div class="modal-body clearfix">
+					<div class="article-meta col-md-12 form-group">
+						<label for="" class="control-label col-md-3">负责人：</label>
+						<div class="col-md-6">
 							<input type="text" class="form-control charge2" value="小陈">
 						</div>
 					</div>
-					<div class="article-con" style="padding-top:0">
-						<textarea id="listText" class="form-control" style="max-height:100px">
-							备注：
-							<p id="remark2">为了提高阿里巴巴中国站服装行业的总体产品品质，更好地规范卖家的发布行为和产品质量，特拟定服装行业标准。</p>
-						</textarea>
+					<div class="article-meta col-md-12 form-group">
+						<label for="" class="control-label col-md-3">备注：</label>
+						<div class="col-md-7">
+							<textarea id="listText" class="form-control" style="height: 200px">为了提高阿里巴巴中国站服装行业的总体产品品质，更好地规范卖家的发布行为和产品质量，特拟定服装行业标准。</textarea>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -407,7 +405,7 @@
 			})
 			// 修改功能
 			var Mlist = 0;
-			var ass1 = [$(".compact2"),$(".charge2")];
+			var ass1 = [$(".compact2"),$(".charge2"),$("#listText")];
 			$(".modifybtn").click(function(){
 				var tdobject = $(this).parent().parent().find("td");
 				var ass2 = [tdobject.eq(2).text(),
@@ -416,7 +414,7 @@
 				]
 				ass1[0].text(ass2[0]);
 				ass1[1].val(ass2[1]);
-				$("#remark2").text(ass2[2]);
+				ass1[2].val(ass2[2]);
 				Mlist = $(this).parent().parent().index();
 			})
 			$("#savemodify").click(function(){
@@ -451,6 +449,7 @@
 					}
 				});
 				if(empty >= index){
+					alert("未选择任何部门");
 					return false;
 				}
 			})
@@ -463,11 +462,6 @@
 					}
 				});
 			})
-			var editor = new wangEditor('listText');
-			editor.config.uploadImgUrl = '/upload';
-			editor.config.emotionsShow = 'value';
-			editor.create();
-			$(".wangEditor-txt").css("height","200px");
 		})();
 	</script>
 </body>
